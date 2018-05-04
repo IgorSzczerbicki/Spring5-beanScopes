@@ -17,6 +17,12 @@
    	<constructor-arg ref = "fortuneService"/>
    </bean>
    
+   <bean id ="otherCoach"
+   class="com.nauka.spring5.beanScopes.TrackCoach"
+   scope="prototype">
+   	<constructor-arg ref = "fortuneService"/>
+   </bean>
+   
 </beans>
 
 
