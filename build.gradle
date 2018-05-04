@@ -1,0 +1,36 @@
+group 'com.nauka'
+version '1.0-SNAPSHOT'
+apply plugin: 'java'
+apply plugin: 'war'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.0.RELEASE'
+    }
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:Cairo-RELEASE'
+    }
+}
+
+dependencies {
+	compile 'org.springframework:spring-core'
+	compile 'org.springframework:spring-context'
+	def junitVersion = '5.0.3'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:' + junitVersion
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:' + junitVersion
+    testCompile 'org.junit.jupiter:junit-jupiter-params:' + junitVersion
+}
